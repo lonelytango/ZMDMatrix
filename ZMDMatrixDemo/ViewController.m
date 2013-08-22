@@ -15,11 +15,12 @@
 {
     [super viewDidLoad];
     
-    ZMDMatrix *matrix = [ZMDMatrix identityMatrixWithSize:5];
+    ZMDMatrix *matrix = [ZMDMatrix randomMatrixWithSize:5];
     NSLog(@"Matrix: %@", matrix);
     NSLog(@"Row Count: %d", [matrix rowCount]);
     NSLog(@"Column Count: %d", [matrix columnCount]);
     NSLog(@"Matrix size: %d", [matrix size]);
+    NSLog(@"Object at [1][2]: %@", [matrix objectInRowIndex:1 columnIndex:2]);
 }
 
 @end

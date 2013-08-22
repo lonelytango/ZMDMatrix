@@ -9,14 +9,29 @@
 #import "ZMDMatrix.h"
 
 @interface ZMDMatrix ()
-@property (nonatomic, strong) NSMutableArray *column;
+@property (nonatomic, strong) NSMutableArray *matrixHead;   //Beginning of each row.
 @end
 
 @implementation ZMDMatrix
 
-+ (instancetype)identityMatrixWithSize:(NSUInteger)size {
+#pragma mark - Initializations
+
++ (id)matrixWithSize:(NSUInteger)size {
+    return [[ZMDMatrix alloc] initWithSize:size];
+}
+
++ (id)matrixWithRowSize:(NSUInteger)rowSize columnSize:(NSUInteger)columnSize {
+    return [[self alloc] initWithRowSize:rowSize columnSize:columnSize];
+}
+
++ (id)identityMatrixWithSize:(NSUInteger)size {
     return [[self alloc] initWithIdentityMatrixWithSize:size];
 }
+
++ (id)randomMatrixWithSize:(NSUInteger)size {
+    return [[self alloc] initWithRowSize:size columnSize:size identityMatrix:NO randomize:YES];
+}
+
 
 - (id)initWithSize:(NSInteger)size {
     NSAssert(size != 0, @"Size of matrix cannot be 0");
@@ -24,21 +39,23 @@
 }
 
 - (id)initWithIdentityMatrixWithSize:(NSUInteger)size {
-    return [self initWithRowSize:size columnSize:size identityMatrix:YES];
+    return [self initWithRowSize:size columnSize:size identityMatrix:YES randomize:NO];
 }
 
 - (id)initWithRowSize:(NSUInteger)rowSize columnSize:(NSUInteger)columnSize {
-    return [self initWithRowSize:rowSize columnSize:columnSize identityMatrix:NO];
+    return [self initWithRowSize:rowSize columnSize:columnSize identityMatrix:NO randomize:NO];
 }
 
-- (id)initWithRowSize:(NSUInteger)rowSize columnSize:(NSUInteger)columnSize identityMatrix:(BOOL)identityMatrix {
+- (id)initWithRowSize:(NSUInteger)rowSize columnSize:(NSUInteger)columnSize identityMatrix:(BOOL)identityMatrix randomize:(BOOL)randomize {
     
     NSAssert((rowSize > 0) && (columnSize > 0), @"Row or column in matrix cannot be 0");
+    
+    NSAssert((identityMatrix && randomize) == NO, @"Identity and randomize are mutually exclusive.");
     
     self = [super init];
     
     if (self) {
-        _column = [NSMutableArray array];
+        _matrixHead = [NSMutableArray array];
         
         for (int i = 0; i < columnSize; i++) {
             
@@ -48,16 +65,26 @@
                 
                 if (identityMatrix && i == j ) {
                     [row addObject:@(1)];
-                } else {
+                
+                } else if (randomize) {
+                    [row addObject:@(arc4random() % 100)];
+                }
+                
+                else {
                     [row addObject:@(0)];
                 }
             }
             
-            [_column addObject:row];
+            [_matrixHead addObject:row];
         }
     }
     return self;
 }
+
+
+
+
+
 
 #pragma mark - Basic Methods
 
@@ -67,25 +94,48 @@
 
 - (NSUInteger)rowCount {
     if ([self columnCount] > 0) {
-        return [self.column[0] count];
+        return [self.matrixHead[0] count];
     }
     return 0;
 }
 
 - (NSUInteger)columnCount {
-    return [self.column count];
+    return [self.matrixHead count];
 }
 
 - (NSString *)description {
     
     NSMutableString *descriptionString = [[NSMutableString alloc] initWithString:@"\n"];
-    for (NSArray *row in _column) {
+    for (NSArray *row in self.matrixHead) {
         for (int j = 0; j < [row count]; j++) {
             [descriptionString appendFormat:@"%@%@", row[j], ((j < [row count] - 1) ? @" " : @"\n")];
         }
     }
     
     return [NSString stringWithFormat:@"%@", descriptionString];
+}
+
+
+
+
+#pragma mark - Data Retrival
+
+- (id)objectInRowIndex:(NSUInteger)rowIndex columnIndex:(NSUInteger)columnIndex  {
+    NSAssert(self != nil, @"Matrix cannot be nil");
+    
+    NSAssert1(columnIndex < [self columnCount], @"Column index exceeded bound : %d", [self columnCount]);
+    
+    NSAssert1(rowIndex < [self rowCount], @"Row index exceeded bound : %d", [self rowCount]);
+    
+    return self.matrixHead[rowIndex][columnIndex];
+}
+
+
+
+#pragma mark - Comparison
+
+- (BOOL)isSameSizeAs:(ZMDMatrix *)matrix {
+    return [self columnCount] == [matrix columnCount] && [self rowCount] == [matrix rowCount];
 }
 
 

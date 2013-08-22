@@ -23,6 +23,7 @@
 		5D2ACE3C17C6A4D9003190E6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5D2ACE3A17C6A4D9003190E6 /* InfoPlist.strings */; };
 		5D2ACE3E17C6A4D9003190E6 /* ZMDMatrixDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D2ACE3D17C6A4D9003190E6 /* ZMDMatrixDemoTests.m */; };
 		5D2ACE4A17C6A4F9003190E6 /* ZMDMatrix.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D2ACE4917C6A4F9003190E6 /* ZMDMatrix.m */; };
+		5D41563017C6ABE600CBCE82 /* ZMDMatrix+Arithmetics.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D41562F17C6ABE600CBCE82 /* ZMDMatrix+Arithmetics.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,8 @@
 		5D2ACE3D17C6A4D9003190E6 /* ZMDMatrixDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZMDMatrixDemoTests.m; sourceTree = "<group>"; };
 		5D2ACE4817C6A4F9003190E6 /* ZMDMatrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZMDMatrix.h; sourceTree = "<group>"; };
 		5D2ACE4917C6A4F9003190E6 /* ZMDMatrix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZMDMatrix.m; sourceTree = "<group>"; };
+		5D41562E17C6ABE600CBCE82 /* ZMDMatrix+Arithmetics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ZMDMatrix+Arithmetics.h"; sourceTree = "<group>"; };
+		5D41562F17C6ABE600CBCE82 /* ZMDMatrix+Arithmetics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ZMDMatrix+Arithmetics.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +167,8 @@
 			children = (
 				5D2ACE4817C6A4F9003190E6 /* ZMDMatrix.h */,
 				5D2ACE4917C6A4F9003190E6 /* ZMDMatrix.m */,
+				5D41562E17C6ABE600CBCE82 /* ZMDMatrix+Arithmetics.h */,
+				5D41562F17C6ABE600CBCE82 /* ZMDMatrix+Arithmetics.m */,
 			);
 			name = ZMDMatrix;
 			path = ../ZMDMatrix;
@@ -268,6 +273,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5D2ACE2917C6A4D9003190E6 /* ViewController.m in Sources */,
+				5D41563017C6ABE600CBCE82 /* ZMDMatrix+Arithmetics.m in Sources */,
 				5D2ACE2017C6A4D9003190E6 /* AppDelegate.m in Sources */,
 				5D2ACE4A17C6A4F9003190E6 /* ZMDMatrix.m in Sources */,
 				5D2ACE1C17C6A4D9003190E6 /* main.m in Sources */,

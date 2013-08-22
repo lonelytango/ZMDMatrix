@@ -11,16 +11,19 @@
 @interface ZMDMatrix : NSObject
 
 //Initialization methods.
-
-+ (instancetype)identityMatrixWithSize:(NSUInteger)size;
-
-- (id)initWithSize:(NSInteger)size;
-- (id)initWithRowSize:(NSUInteger)rowSize columnSize:(NSUInteger)columnSize;
-- (id)initWithIdentityMatrixWithSize:(NSUInteger)size;
-
++ (id)matrixWithSize:(NSUInteger)size;
++ (id)matrixWithRowSize:(NSUInteger)rowSize columnSize:(NSUInteger)columnSize;
++ (id)identityMatrixWithSize:(NSUInteger)size;
++ (id)randomMatrixWithSize:(NSUInteger)size;
 
 - (NSUInteger)rowCount;
 - (NSUInteger)columnCount;
 - (NSUInteger)size;
+
+//Data Retrival
+- (id)objectInRowIndex:(NSUInteger)rowIndex columnIndex:(NSUInteger)columnIndex;
+
+//Comparison
+- (BOOL)isSameSizeAs:(ZMDMatrix *)matrix;
 
 @end
