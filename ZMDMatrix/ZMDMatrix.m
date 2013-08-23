@@ -62,11 +62,11 @@
     if (self) {
         _matrixHead = [NSMutableArray array];
         
-        for (int i = 0; i < columnSize; i++) {
+        for (int i = 0; i < rowSize; i++) {
             
             NSMutableArray *row = [NSMutableArray new];
             
-            for (int j = 0; j < rowSize; j++) {
+            for (int j = 0; j < columnSize; j++) {
                 
                 if (identityMatrix && i == j ) {
                     [row addObject:@(1)];

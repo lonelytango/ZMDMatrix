@@ -16,15 +16,18 @@
 {
     [super viewDidLoad];
     
-    ZMDMatrix *matrix = [ZMDMatrix randomMatrixWithRowSize:1 columnSize:2];
+    //ZMDMatrix *matrix = [ZMDMatrix randomMatrixWithRowSize:20 columnSize:10];
+    //ZMDMatrix *matrix2 = [ZMDMatrix randomMatrixWithRowSize:10 columnSize:5];
     
-    ZMDMatrix *matrix2 = [ZMDMatrix randomMatrixWithRowSize:2 columnSize:1];
     
-    //ZMDMatrix *sumMatrix = [ZMDMatrix sumOfMatrix:matrix and:matrix2];
+    ZMDMatrix *matrix = [ZMDMatrix randomMatrixWithRowSize:20 columnSize:10];
+    ZMDMatrix *matrix2 = [ZMDMatrix randomMatrixWithRowSize:10 columnSize:20];
     //ZMDMatrix *diffMatrix = [ZMDMatrix differenceOfMatrix:matrix and:matrix2];
-    ZMDMatrix *productMatris = [ZMDMatrix productOfMatrix:matrix and:matrix2];
     
-    NSLog(@"Product Matrix: %@", productMatris);
+    //ZMDMatrix *productMatris = [ZMDMatrix productOfMatrix:matrix and:matrix2];
+    ZMDMatrix *sumMatrix = [ZMDMatrix productOfMatrix:matrix and:matrix2];
+    
+    NSLog(@"Product Matrix: %@", sumMatrix);
     
     /*
     NSLog(@"Row Count: %d", [matrix rowCount]);
