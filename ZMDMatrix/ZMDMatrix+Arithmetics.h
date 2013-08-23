@@ -10,6 +10,8 @@
 
 @interface ZMDMatrix (Arithmetics)
 
-- (void)addMatrix:(ZMDMatrix *)matrix;
++ (ZMDMatrix *)sumOfMatrix:(ZMDMatrix *)matrix1 and:(ZMDMatrix *)matrix2;
++ (ZMDMatrix *)differenceOfMatrix:(ZMDMatrix *)matrix1 and:(ZMDMatrix *)matrix2;
++ (ZMDMatrix *)productOfMatrix:(ZMDMatrix *)matrix1 and:(ZMDMatrix *)matrix3;
 
 @end

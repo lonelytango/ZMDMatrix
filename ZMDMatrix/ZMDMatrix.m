@@ -9,7 +9,7 @@
 #import "ZMDMatrix.h"
 
 @interface ZMDMatrix ()
-@property (nonatomic, strong) NSMutableArray *matrixHead;   //Beginning of each row.
+@property (nonatomic, strong, readwrite) NSMutableArray *matrixHead;   //Beginning of each row.
 @end
 
 @implementation ZMDMatrix
@@ -30,6 +30,11 @@
 
 + (id)randomMatrixWithSize:(NSUInteger)size {
     return [[self alloc] initWithRowSize:size columnSize:size identityMatrix:NO randomize:YES];
+}
+
+
++ (id)randomMatrixWithRowSize:(NSUInteger)rowSize columnSize:(NSUInteger)columnSize {
+    return [[self alloc] initWithRowSize:rowSize columnSize:columnSize identityMatrix:NO randomize:YES];
 }
 
 
@@ -93,14 +98,14 @@
 }
 
 - (NSUInteger)rowCount {
-    if ([self columnCount] > 0) {
-        return [self.matrixHead[0] count];
-    }
-    return 0;
+    return [self.matrixHead count];
 }
 
 - (NSUInteger)columnCount {
-    return [self.matrixHead count];
+    if ([self rowCount] > 0) {
+        return [self.matrixHead[0] count];
+    }
+    return 0;
 }
 
 - (NSString *)description {
@@ -130,6 +135,13 @@
     return self.matrixHead[rowIndex][columnIndex];
 }
 
+
+#pragma mark - Data Assignment
+
+- (void)assignNumber:(NSNumber *)number toRowIndex:(NSUInteger)rowIndex columnIndex:(NSUInteger)columnIndex {
+    NSMutableArray *rowArray = self.matrixHead[rowIndex];
+    rowArray[columnIndex] = number;
+}
 
 
 #pragma mark - Comparison

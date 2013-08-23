@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D3A48AE17C6D9BB00D0BE76 /* NSNumber+Arithmetics.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D3A48AD17C6D9BB00D0BE76 /* NSNumber+Arithmetics.m */; };
 		5D2ACE1017C6A4D9003190E6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D2ACE0F17C6A4D9003190E6 /* Foundation.framework */; };
 		5D2ACE1217C6A4D9003190E6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D2ACE1117C6A4D9003190E6 /* CoreGraphics.framework */; };
 		5D2ACE1417C6A4D9003190E6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D2ACE1317C6A4D9003190E6 /* UIKit.framework */; };
@@ -37,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4D3A48AC17C6D9BB00D0BE76 /* NSNumber+Arithmetics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber+Arithmetics.h"; sourceTree = "<group>"; };
+		4D3A48AD17C6D9BB00D0BE76 /* NSNumber+Arithmetics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+Arithmetics.m"; sourceTree = "<group>"; };
 		5D2ACE0C17C6A4D9003190E6 /* ZMDMatrixDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZMDMatrixDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D2ACE0F17C6A4D9003190E6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5D2ACE1117C6A4D9003190E6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -87,6 +90,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4D3A48AB17C6D98D00D0BE76 /* Supplementary Categories */ = {
+			isa = PBXGroup;
+			children = (
+				4D3A48AC17C6D9BB00D0BE76 /* NSNumber+Arithmetics.h */,
+				4D3A48AD17C6D9BB00D0BE76 /* NSNumber+Arithmetics.m */,
+			);
+			path = "Supplementary Categories";
+			sourceTree = "<group>";
+		};
 		5D2ACE0317C6A4D9003190E6 = {
 			isa = PBXGroup;
 			children = (
@@ -169,6 +181,7 @@
 				5D2ACE4917C6A4F9003190E6 /* ZMDMatrix.m */,
 				5D41562E17C6ABE600CBCE82 /* ZMDMatrix+Arithmetics.h */,
 				5D41562F17C6ABE600CBCE82 /* ZMDMatrix+Arithmetics.m */,
+				4D3A48AB17C6D98D00D0BE76 /* Supplementary Categories */,
 			);
 			name = ZMDMatrix;
 			path = ../ZMDMatrix;
@@ -273,6 +286,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5D2ACE2917C6A4D9003190E6 /* ViewController.m in Sources */,
+				4D3A48AE17C6D9BB00D0BE76 /* NSNumber+Arithmetics.m in Sources */,
 				5D41563017C6ABE600CBCE82 /* ZMDMatrix+Arithmetics.m in Sources */,
 				5D2ACE2017C6A4D9003190E6 /* AppDelegate.m in Sources */,
 				5D2ACE4A17C6A4F9003190E6 /* ZMDMatrix.m in Sources */,

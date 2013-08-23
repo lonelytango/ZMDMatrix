@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "ZMDMatrix.h"
+#import "ZMDMatrix+Arithmetics.h"
 
 @implementation ViewController
 
@@ -15,12 +16,22 @@
 {
     [super viewDidLoad];
     
-    ZMDMatrix *matrix = [ZMDMatrix randomMatrixWithSize:5];
-    NSLog(@"Matrix: %@", matrix);
+    ZMDMatrix *matrix = [ZMDMatrix randomMatrixWithRowSize:1 columnSize:2];
+    
+    ZMDMatrix *matrix2 = [ZMDMatrix randomMatrixWithRowSize:2 columnSize:1];
+    
+    //ZMDMatrix *sumMatrix = [ZMDMatrix sumOfMatrix:matrix and:matrix2];
+    //ZMDMatrix *diffMatrix = [ZMDMatrix differenceOfMatrix:matrix and:matrix2];
+    ZMDMatrix *productMatris = [ZMDMatrix productOfMatrix:matrix and:matrix2];
+    
+    NSLog(@"Product Matrix: %@", productMatris);
+    
+    /*
     NSLog(@"Row Count: %d", [matrix rowCount]);
     NSLog(@"Column Count: %d", [matrix columnCount]);
     NSLog(@"Matrix size: %d", [matrix size]);
     NSLog(@"Object at [1][2]: %@", [matrix objectInRowIndex:1 columnIndex:2]);
+     */
 }
 
 @end
