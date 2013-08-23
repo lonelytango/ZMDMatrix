@@ -19,10 +19,10 @@
     
     
     ZMDMatrix *matrix = [ZMDMatrix randomMatrixWithRowSize:5 columnSize:3];
-    ZMDMatrix *transMatrix = [matrix transpose];
+    ZMDMatrix *productMatrix = [ZMDMatrix multiplyMatrix:matrix byValue:@(2)];
     
     NSLog(@"Matrix: %@", matrix);
-    NSLog(@"Trans matrix: %@", transMatrix);
+    NSLog(@"Product matrix: %@", productMatrix);
     
     
     //ZMDMatrix *matrix2 = [ZMDMatrix randomMatrixWithRowSize:10 columnSize:5];

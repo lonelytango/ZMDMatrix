@@ -13,5 +13,6 @@
 + (ZMDMatrix *)sumOfMatrix:(ZMDMatrix *)matrix1 and:(ZMDMatrix *)matrix2;
 + (ZMDMatrix *)differenceOfMatrix:(ZMDMatrix *)matrix1 and:(ZMDMatrix *)matrix2;
 + (ZMDMatrix *)productOfMatrix:(ZMDMatrix *)matrix1 and:(ZMDMatrix *)matrix3;
++ (ZMDMatrix *)multiplyMatrix:(ZMDMatrix *)matrix byValue:(NSNumber *)multiplier;
 
 @end

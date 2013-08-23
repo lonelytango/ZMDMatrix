@@ -100,5 +100,23 @@
 }
 
 
++ (ZMDMatrix *)multiplyMatrix:(ZMDMatrix *)matrix byValue:(NSNumber *)multiplier {
+    
+    NSInteger row = [matrix rowCount];
+    NSInteger column = [matrix columnCount];
+    
+    ZMDMatrix *resultMatrix = [ZMDMatrix matrixWithRowSize:row columnSize:column];
+    
+    for (int i = 0; i < row; i++) {
+        for (int j = 0; j < column; j++) {
+            NSNumber *target = [matrix objectInRowIndex:i columnIndex:j];
+            NSNumber *productTarget = [NSNumber productOfNumber:target and:multiplier];
+            [resultMatrix assignNumber:productTarget toRowIndex:i columnIndex:j];
+        }
+    }
+    
+    return resultMatrix;
+}
+
 
 @end
