@@ -111,7 +111,7 @@
 
 - (NSString *)description {
     
-    NSMutableString *descriptionString = [NSMutableString string];
+    NSMutableString *descriptionString = [NSMutableString stringWithString:@"\n"];
     
     for (NSArray *row in self.matrixHead) {
         for (int j = 0; j < [row count]; j++) {
@@ -206,9 +206,8 @@
             
             //Use the first row as for matrix permutation.
             NSNumber *permutationRoot = [self objectInRowIndex:0 columnIndex:x];
-            NSNumber *subDeterminant = [NSNumber productOfNumber:permutationRoot and:[subMatrix determinant]];
-            NSNumber *addSignSubDeterminant = [NSNumber productOfNumber:subDeterminant and:@(sign)];
-            determinant = [NSNumber sumOfNumber:determinant and:addSignSubDeterminant];
+            NSNumber *subDeterminant = [[permutationRoot multiply:[subMatrix determinant]] multiply:@(sign)];
+            determinant = [determinant add:subDeterminant];
             
             sign = -sign;
         }
@@ -278,9 +277,8 @@
                 }
                 
                 //Use the first row as for matrix permutation.
-                NSNumber *subMatrixDeterminant = [subMatrix determinant];
-                NSNumber *addSignSubDeterminant = [NSNumber productOfNumber:subMatrixDeterminant and:@(sign)];
-                [coefficientMatrix assignNumber:addSignSubDeterminant toRowIndex:x columnIndex:y];
+                NSNumber *subMatrixDeterminant = [[subMatrix determinant] multiply:@(sign)];
+                [coefficientMatrix assignNumber:subMatrixDeterminant toRowIndex:x columnIndex:y];
                 sign = -sign;
             }
         }
@@ -294,7 +292,7 @@
     ZMDMatrix *adjunctMatrix = [self adjunctMatrix];
     NSNumber *determinant = [self determinant];
     
-    return [ZMDMatrix multiplyMatrix:adjunctMatrix byValue:[NSNumber quotientOfNumber:@(1) and:determinant]];
+    return [ZMDMatrix multiplyMatrix:adjunctMatrix byValue:[@(1) divide:determinant]];
 }
 
 @end

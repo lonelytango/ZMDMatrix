@@ -42,8 +42,8 @@
         
         for (int j = 0; j < [matrix1 columnCount]; j++) {
             
-            NSNumber *sum = [NSNumber differenceOfNumber:[matrix1 objectInRowIndex:i columnIndex:j] and:[matrix2 objectInRowIndex:i columnIndex:j]];
-            [diffMatrix assignNumber:sum toRowIndex:i columnIndex:j];
+            NSNumber *difference = [NSNumber differenceOfNumber:[matrix1 objectInRowIndex:i columnIndex:j] and:[matrix2 objectInRowIndex:i columnIndex:j]];
+            [diffMatrix assignNumber:difference toRowIndex:i columnIndex:j];
         }
     }
     
@@ -86,7 +86,7 @@
                 
                 //NSLog(@"A(%d, %d) * B(%d, %d) = %f * %f = %f", i, k, k, j, [op1 floatValue], [op2 floatValue], [newProduct floatValue]);
                 
-                newProductSum = [NSNumber sumOfNumber:newProductSum and:newProduct];
+                newProductSum = [newProductSum add:newProduct];
             }
             
             [productMatrix assignNumber:newProductSum toRowIndex:i columnIndex:j];
@@ -110,7 +110,7 @@
     for (int i = 0; i < row; i++) {
         for (int j = 0; j < column; j++) {
             NSNumber *target = [matrix objectInRowIndex:i columnIndex:j];
-            NSNumber *productTarget = [NSNumber productOfNumber:target and:multiplier];
+            NSNumber *productTarget = [target multiply:multiplier];
             [resultMatrix assignNumber:productTarget toRowIndex:i columnIndex:j];
         }
     }

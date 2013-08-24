@@ -30,4 +30,27 @@
     return @([a integerValue] % [b integerValue]);
 }
 
+
+
+
+- (NSNumber *)add:(NSNumber *)number {
+    return @([self floatValue] + [number floatValue]);
+}
+
+- (NSNumber *)subtract:(NSNumber *)number {
+    return @([self floatValue] - [number floatValue]);
+}
+
+- (NSNumber *)multiply:(NSNumber *)number {
+    return @([self floatValue] * [number floatValue]);
+}
+
+- (NSNumber *)divide:(NSNumber *)number {
+    return @([self floatValue] / [number floatValue]);
+}
+
+- (NSNumber *)modular:(NSNumber *)number {
+    return @([self integerValue] % [number integerValue]);
+}
+
 @end
