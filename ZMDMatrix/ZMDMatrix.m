@@ -73,7 +73,7 @@
                     [row addObject:@(1)];
                 
                 } else if (randomize) {
-                    [row addObject:@(arc4random() % 100)];
+                    [row addObject:@(arc4random() % 10)];
                 }
                 
                 else {
@@ -213,6 +213,21 @@
     }
     
     return determinant;
+}
+
+- (ZMDMatrix *)transpose {
+    
+    NSInteger row = [self rowCount];
+    NSInteger column = [self columnCount];
+    
+    ZMDMatrix *transposeMatrix = [ZMDMatrix matrixWithRowSize:column columnSize:row];
+    for (int i = 0; i < row; i++) {
+        for (int j = 0; j < column; j++) {
+            NSNumber *target = [self objectInRowIndex:i columnIndex:j];
+            [transposeMatrix assignNumber:target toRowIndex:j columnIndex:i];
+        }
+    }
+    return transposeMatrix;
 }
 
 @end

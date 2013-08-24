@@ -9,7 +9,6 @@
 #import "ViewController.h"
 #import "ZMDMatrix.h"
 #import "ZMDMatrix+Arithmetics.h"
-#import "ZMDMatrix+Operations.h"
 
 @implementation ViewController
 
@@ -21,11 +20,15 @@
     //ZMDMatrix *matrix = [ZMDMatrix randomMatrixWithRowSize:5 columnSize:3];
     //ZMDMatrix *productMatrix = [ZMDMatrix multiplyMatrix:matrix byValue:@(2)];
     
-    ZMDMatrix *matrix = [ZMDMatrix randomMatrixWithSize:4];
+    ZMDMatrix *matrix = [ZMDMatrix randomMatrixWithSize:3];
+    ZMDMatrix *transposeMatrix = [matrix transpose];
     
     NSLog(@"Matrix: %@", matrix);
-    NSLog(@"Product matrix: %@", [matrix determinant]);
+    NSLog(@"Transpose matrix: %@", transposeMatrix);
     
+    ZMDMatrix *determinantMatrix = [ZMDMatrix productOfMatrix:matrix and:transposeMatrix];
+    
+    NSLog(@"Determinant Matrix: %@", determinantMatrix);
     
     //ZMDMatrix *matrix2 = [ZMDMatrix randomMatrixWithRowSize:10 columnSize:5];
     

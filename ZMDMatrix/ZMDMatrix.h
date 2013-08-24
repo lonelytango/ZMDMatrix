@@ -34,5 +34,6 @@
 
 //Characteristics
 - (NSNumber *)determinant;
+- (ZMDMatrix *)transpose;
 
 @end
