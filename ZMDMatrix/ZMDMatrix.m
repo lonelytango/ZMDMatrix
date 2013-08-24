@@ -111,15 +111,17 @@
 
 - (NSString *)description {
     
-    NSMutableString *descriptionString = [[NSMutableString alloc] initWithString:@"\n"];
+    NSMutableString *descriptionString = [NSMutableString string];
+    
     for (NSArray *row in self.matrixHead) {
         for (int j = 0; j < [row count]; j++) {
             [descriptionString appendFormat:@"%@%@", row[j], ((j < [row count] - 1) ? @" " : @"\n")];
         }
     }
     
-    return [NSString stringWithFormat:@"%@", descriptionString];
+    return descriptionString;
 }
+
 
 
 
@@ -228,6 +230,71 @@
         }
     }
     return transposeMatrix;
+}
+
+- (ZMDMatrix *)adjunctMatrix {
+    int row = [self rowCount];
+    int column = [self columnCount];
+    int matrixSize = [self size];
+    int sign = 1;
+    
+    NSAssert(row == column, @"Unable to find determinant of non-square matrix.");
+    NSAssert(matrixSize != 0, @"Size of matrix cannot be 0");
+    
+    ZMDMatrix *coefficientMatrix = [ZMDMatrix matrixWithSize:row];
+    
+    if (matrixSize == 1) {
+        return self;
+        
+    } else {
+        
+        ZMDMatrix *subMatrix = [ZMDMatrix matrixWithSize:row-1];
+        
+        for (int x = 0; x < row; x++) {
+            
+            for (int y = 0; y < row; y++) {
+                
+                int p = 0;
+                int q = 0;
+                
+                //NSLog(@"================================");
+                //NSLog(@"x: %d, y: %d", x, y);
+                
+                for (int i = 0; i < row; i++) {
+                    
+                    for (int j = 0; j < row; j++) {
+                        if (i != x && j != y) {
+                            //NSLog(@"i: %d, j: %d, p: %d, q: %d", i, j, p, q);
+                            NSNumber *target = [self objectInRowIndex:i columnIndex:j];
+                            [subMatrix assignNumber:target toRowIndex:p columnIndex:q];
+                            q += 1;
+                            
+                            if (q % (row-1) == 0) {
+                                p += 1;
+                                q = 0;
+                            }
+                        }
+                    }
+                }
+                
+                //Use the first row as for matrix permutation.
+                NSNumber *subMatrixDeterminant = [subMatrix determinant];
+                NSNumber *addSignSubDeterminant = [NSNumber productOfNumber:subMatrixDeterminant and:@(sign)];
+                [coefficientMatrix assignNumber:addSignSubDeterminant toRowIndex:x columnIndex:y];
+                sign = -sign;
+            }
+        }
+    }
+    
+    return [coefficientMatrix transpose];
+}
+
+- (ZMDMatrix *)inverseMatrix {
+    
+    ZMDMatrix *adjunctMatrix = [self adjunctMatrix];
+    NSNumber *determinant = [self determinant];
+    
+    return [ZMDMatrix multiplyMatrix:adjunctMatrix byValue:[NSNumber quotientOfNumber:@(1) and:determinant]];
 }
 
 @end

@@ -20,15 +20,25 @@
     //ZMDMatrix *matrix = [ZMDMatrix randomMatrixWithRowSize:5 columnSize:3];
     //ZMDMatrix *productMatrix = [ZMDMatrix multiplyMatrix:matrix byValue:@(2)];
     
-    ZMDMatrix *matrix = [ZMDMatrix randomMatrixWithSize:3];
-    ZMDMatrix *transposeMatrix = [matrix transpose];
+    ZMDMatrix *matrix = [ZMDMatrix randomMatrixWithSize:6];
+    ZMDMatrix *adjunctMatrix = [matrix adjunctMatrix];
     
     NSLog(@"Matrix: %@", matrix);
-    NSLog(@"Transpose matrix: %@", transposeMatrix);
+    NSLog(@"Adjunct matrix: %@", adjunctMatrix);
     
-    ZMDMatrix *determinantMatrix = [ZMDMatrix productOfMatrix:matrix and:transposeMatrix];
+    NSLog(@"Determinant: %@", [matrix determinant]);
     
-    NSLog(@"Determinant Matrix: %@", determinantMatrix);
+    //ZMDMatrix *determinantMatrix = [ZMDMatrix productOfMatrix:matrix and:adjunctMatrix];
+    
+    ZMDMatrix *inverseMatrix = [matrix inverseMatrix];
+    
+    //ZMDMatrix *checkMatrix = [ZMDMatrix productOfMatrix:matrix and:inverseMatrix];
+    
+    NSLog(@"Determinant matrix: %@", inverseMatrix);
+    
+    //ZMDMatrix *determinantMatrix = [ZMDMatrix productOfMatrix:matrix and:transposeMatrix];
+    
+    //NSLog(@"Determinant Matrix: %@", determinantMatrix);
     
     //ZMDMatrix *matrix2 = [ZMDMatrix randomMatrixWithRowSize:10 columnSize:5];
     

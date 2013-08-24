@@ -35,5 +35,7 @@
 //Characteristics
 - (NSNumber *)determinant;
 - (ZMDMatrix *)transpose;
+- (ZMDMatrix *)adjunctMatrix;
+- (ZMDMatrix *)inverseMatrix;
 
 @end
