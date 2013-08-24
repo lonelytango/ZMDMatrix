@@ -32,4 +32,7 @@
 //Comparison
 - (BOOL)isSameSizeAs:(ZMDMatrix *)matrix;
 
+//Characteristics
+- (NSNumber *)determinant;
+
 @end

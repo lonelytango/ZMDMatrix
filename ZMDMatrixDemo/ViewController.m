@@ -18,11 +18,13 @@
     [super viewDidLoad];
     
     
-    ZMDMatrix *matrix = [ZMDMatrix randomMatrixWithRowSize:5 columnSize:3];
-    ZMDMatrix *productMatrix = [ZMDMatrix multiplyMatrix:matrix byValue:@(2)];
+    //ZMDMatrix *matrix = [ZMDMatrix randomMatrixWithRowSize:5 columnSize:3];
+    //ZMDMatrix *productMatrix = [ZMDMatrix multiplyMatrix:matrix byValue:@(2)];
+    
+    ZMDMatrix *matrix = [ZMDMatrix randomMatrixWithSize:4];
     
     NSLog(@"Matrix: %@", matrix);
-    NSLog(@"Product matrix: %@", productMatrix);
+    NSLog(@"Product matrix: %@", [matrix determinant]);
     
     
     //ZMDMatrix *matrix2 = [ZMDMatrix randomMatrixWithRowSize:10 columnSize:5];
