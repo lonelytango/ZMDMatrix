@@ -151,6 +151,35 @@
 }
 
 
+- (void)addRow {
+    [self insertRowAtRowIndex:[self rowCount]];
+}
+
+- (void)addColumn {
+    NSLog(@"Column Count: %d", [self columnCount]);
+    
+    [self insertColumnAtColumnIndex:[self columnCount]];
+}
+
+- (void)insertRowAtRowIndex:(NSUInteger)index {
+    NSAssert(index <= [self rowCount], @"Insertion index cannot larger than number of rows.");
+    
+    NSMutableArray *row = [NSMutableArray new];
+    for (int i = 0; i < [self rowCount]; i++) {
+        [row addObject:@(0)];
+    }
+    
+    [self.matrixHead insertObject:row atIndex:index];
+}
+
+- (void)insertColumnAtColumnIndex:(NSUInteger)index {
+    NSAssert(index <= [self columnCount], @"Insertion index cannot larger than number of columns.");
+    
+    for (NSMutableArray *row in self.matrixHead) {
+        [row insertObject:@(0) atIndex:index];
+    }
+}
+
 
 
 #pragma mark - Comparison

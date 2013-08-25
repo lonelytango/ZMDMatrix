@@ -27,7 +27,13 @@
 
 //Data Retrival
 - (id)objectInRowIndex:(NSUInteger)rowIndex columnIndex:(NSUInteger)columnIndex;
+
+//Data Assignment
 - (void)assignNumber:(NSNumber *)number toRowIndex:(NSUInteger)rowIndex columnIndex:(NSUInteger)columnIndex;
+- (void)addRow;     //Add row to the end of last row.
+- (void)addColumn;  //Add column to the end of last column.
+- (void)insertRowAtRowIndex:(NSUInteger)index;
+- (void)insertColumnAtColumnIndex:(NSUInteger)index;
 
 //Comparison
 - (BOOL)isSameSizeAs:(ZMDMatrix *)matrix;
