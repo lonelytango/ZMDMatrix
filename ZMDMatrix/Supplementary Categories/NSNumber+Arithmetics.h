@@ -23,4 +23,13 @@
 - (NSNumber *)divide:(NSNumber *)number;
 - (NSNumber *)modular:(NSNumber *)number;
 
+
+//Returns array of 4 items:
+//real Root of 1st solution
+//imaginary root of 1st solution,
+//real Root of 2nd solution
+//imaginary root of 2nd solution,
+
++ (NSArray *)rootsForQuadraticEq:(NSNumber *)param1 param2:(NSNumber *)param2 param3:(NSNumber *)param3;
+
 @end

@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "ZMDMatrix.h"
 #import "ZMDMatrix+Arithmetics.h"
+#import "NSNumber+Arithmetics.h"
 
 @implementation ViewController
 
@@ -16,7 +17,15 @@
 {
     [super viewDidLoad];
     
-    
+    [self polynomialDemo];
+}
+
+- (void)polynomialDemo {
+    NSArray *roots = [NSNumber rootsForQuadraticEq:@(1) param2:@(3) param3:@(4)];
+    NSLog(@"Roots: %@", roots);
+}
+
+- (void)matrixDemo {
     //ZMDMatrix *matrix = [ZMDMatrix randomMatrixWithRowSize:5 columnSize:3];
     //ZMDMatrix *productMatrix = [ZMDMatrix multiplyMatrix:matrix byValue:@(2)];
     
@@ -52,11 +61,10 @@
     //NSLog(@"Product Matrix: %@", sumMatrix);
     
     /*
-    NSLog(@"Row Count: %d", [matrix rowCount]);
-    NSLog(@"Column Count: %d", [matrix columnCount]);
-    NSLog(@"Matrix size: %d", [matrix size]);
-    NSLog(@"Object at [1][2]: %@", [matrix objectInRowIndex:1 columnIndex:2]);
+     NSLog(@"Row Count: %d", [matrix rowCount]);
+     NSLog(@"Column Count: %d", [matrix columnCount]);
+     NSLog(@"Matrix size: %d", [matrix size]);
+     NSLog(@"Object at [1][2]: %@", [matrix objectInRowIndex:1 columnIndex:2]);
      */
 }
-
 @end

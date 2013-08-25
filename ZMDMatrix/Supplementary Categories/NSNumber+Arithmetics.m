@@ -53,4 +53,37 @@
     return @([self integerValue] % [number integerValue]);
 }
 
+
++ (NSArray *)rootsForQuadraticEq:(NSNumber *)param1 param2:(NSNumber *)param2 param3:(NSNumber *)param3 {
+    
+    double a = [param1 doubleValue];
+    double b = [param2 doubleValue];
+    double c = [param3 doubleValue];
+    
+    //double sol1 = (-b + sqrt(b*b - 4*a*c)) / 2*a;
+    //double sol2 = (-b - sqrt(b*b - 4*a*c)) / 2*a;
+    
+    double sol1real, sol1img, sol2real, sol2img;
+    
+    double discriminant = b*b - 4*a*c;
+    
+    if (discriminant >= 0) {
+        sol1real = (-b + sqrt(discriminant)) / 2*a;
+        sol1img = 0;
+        sol2real = (-b - sqrt(discriminant)) / 2*a;
+        sol2img = 0;
+        
+    } else {
+        sol1real = -b / 2*a;
+        sol1img  = sqrt(abs(discriminant)) / 2*a;
+        sol2real = -b / 2*a;
+        sol2img  = -sqrt(abs(discriminant)) / 2*a;
+    }
+    
+    
+    NSLog(@"Sol 1r: %f, Sol 1i: %f, Sol 2r: %f, Sol 2r: %f", sol1real, sol1img, sol2real, sol2img);
+    
+    return @[@(sol1real), @(sol1img), @(sol2real), @(sol2img)];
+}
+
 @end
