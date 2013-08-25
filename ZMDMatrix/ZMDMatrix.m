@@ -18,6 +18,13 @@
 
 #pragma mark - Initializations
 
+- (id)copyWithZone:(NSZone *)zone
+{
+    ZMDMatrix *matrixCopy = [ZMDMatrix allocWithZone:zone];
+    [matrixCopy setMatrixHead:[self.matrixHead mutableCopy]];
+    return matrixCopy;
+}
+
 + (id)matrixWithSize:(NSUInteger)size {
     return [[ZMDMatrix alloc] initWithSize:size];
 }
@@ -41,8 +48,6 @@
 + (id)diagonalMatrixWithValues:(NSArray *)values {
     return [[self alloc] initWithRowSize:[values count] columnSize:[values count] identityMatrix:NO randomize:NO diagonalArray:values];
 }
-
-
 
 - (id)initWithSize:(NSInteger)size {
     NSAssert(size != 0, @"Size of matrix cannot be 0");
@@ -121,6 +126,22 @@
 
 - (BOOL)isSquare {
     return [self numberOfRows] == [self numberOfColumns];
+}
+
+- (BOOL)isEqual:(ZMDMatrix *)matrix {
+    
+    if ([self numberOfRows] != [matrix numberOfRows] || [self numberOfColumns] != [matrix numberOfColumns]) {
+        return NO;
+    }
+    
+    for (int i = 0; i < [self numberOfRows]; i++) {
+        for (int j = 0; j < [self numberOfColumns]; j++) {
+            if ([[self objectInRowIndex:i columnIndex:j] compare:[matrix objectInRowIndex:i columnIndex:j]] != NSOrderedSame) {
+                return NO;
+            }
+        }
+    }
+    return YES;
 }
 
 - (NSString *)description {

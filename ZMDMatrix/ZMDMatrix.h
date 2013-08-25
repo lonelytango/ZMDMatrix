@@ -27,6 +27,7 @@
 - (NSUInteger)numberOfColumns;
 - (NSUInteger)size;
 - (BOOL)isSquare;
+- (BOOL)isEqual:(ZMDMatrix *)matrix;
 
 //Data Retrival
 - (id)objectInRowIndex:(NSUInteger)rowIndex columnIndex:(NSUInteger)columnIndex;

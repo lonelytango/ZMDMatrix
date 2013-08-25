@@ -32,9 +32,16 @@
     //ZMDMatrix *productMatrix = [ZMDMatrix multiplyMatrix:matrix byValue:@(2)];
     
     ZMDMatrix *matrix = [ZMDMatrix randomMatrixWithSize:10];
-    NSLog(@"Matrix: %@", matrix);
+    ZMDMatrix *matrix2 = [ZMDMatrix randomMatrixWithSize:10];
+    ZMDMatrix *sameMatrix = [matrix copy];
     
-    NSLog(@"Row 4: %@", [matrix rowAtIndex:4]);
-    NSLog(@"Column 5: %@", [matrix columnAtIndex:5]);
+    [matrix addRow];
+    [sameMatrix addRow];
+    NSLog(@"matrix: %@, matrix copy: %@", matrix, sameMatrix);
+    NSLog(@"Matrix same?, %d", ([matrix isEqual:sameMatrix]));
+    //NSLog(@"Matrix same?, %d", ([matrix isEqual:matrix2]));
+    
+//    NSLog(@"Row 4: %@", [matrix rowAtIndex:4]);
+//    NSLog(@"Column 5: %@", [matrix columnAtIndex:5]);
 }
 @end
