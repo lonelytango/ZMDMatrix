@@ -45,5 +45,18 @@
     
     [matrix insertColumnAtColumnIndex:4];
     NSLog(@"Added Column Matrix: %@ - %d x %d", matrix, [matrix numberOfRows], [matrix numberOfColumns]);
+
+    
+    [matrix removeLastColumn];
+    NSLog(@"Remove Row Matrix: %@ - %d x %d", matrix, [matrix numberOfRows], [matrix numberOfColumns]);
+    
+    [matrix removeLastRow];
+    NSLog(@"Remove Column Matrix: %@ - %d x %d", matrix, [matrix numberOfRows], [matrix numberOfColumns]);
+    
+    [matrix removeRowAtIndex:3];
+    NSLog(@"Added Row Matrix: %@ - %d x %d", matrix, [matrix numberOfRows], [matrix numberOfColumns]);
+    
+    [matrix removeColumnAtIndex:4];
+    NSLog(@"Remove Column Matrix: %@ - %d x %d", matrix, [matrix numberOfRows], [matrix numberOfColumns]);
 }
 @end

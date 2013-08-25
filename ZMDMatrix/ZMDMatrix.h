@@ -37,6 +37,12 @@
 - (void)insertRowAtRowIndex:(NSUInteger)index;
 - (void)insertColumnAtColumnIndex:(NSUInteger)index;
 
+- (void)removeLastRow;
+- (void)removeLastColumn;
+- (void)removeRowAtIndex:(NSUInteger)index;
+- (void)removeColumnAtIndex:(NSUInteger)index;
+
+
 //Comparison
 - (BOOL)isSameSizeAs:(ZMDMatrix *)matrix;
 

@@ -169,7 +169,7 @@
 }
 
 - (void)insertRowAtRowIndex:(NSUInteger)index {
-    NSAssert(index <= [self numberOfRows], @"Insertion index cannot larger than number of rows.");
+    NSAssert2(index <= [self numberOfRows], @"Insertion index (%d) cannot larger than number of rows (%d).", index, [self numberOfRows]);
     
     NSMutableArray *row = [NSMutableArray new];
     for (int i = 0; i < [self numberOfRows]; i++) {
@@ -180,12 +180,36 @@
 }
 
 - (void)insertColumnAtColumnIndex:(NSUInteger)index {
-    NSAssert(index <= [self numberOfColumns], @"Insertion index cannot larger than number of columns.");
+    NSAssert2(index <= [self numberOfColumns], @"Insertion index (%d) cannot be larger than number of columns (%d).", index, [self numberOfColumns]);
     
     for (NSMutableArray *row in self.matrixHead) {
         [row insertObject:@(0) atIndex:index];
     }
 }
+
+- (void)removeLastRow {
+    [self removeRowAtIndex:([self numberOfRows]-1)];
+}
+
+- (void)removeLastColumn {
+    [self removeColumnAtIndex:([self numberOfColumns] - 1)];
+}
+
+- (void)removeRowAtIndex:(NSUInteger)index {
+    NSAssert2(index < [self numberOfRows], @"Deletion index (%d) cannot be larger than number of rows(%d).", index, [self numberOfRows]);
+    
+    [self.matrixHead removeObjectAtIndex:index];
+}
+
+- (void)removeColumnAtIndex:(NSUInteger)index {
+    NSAssert2(index < [self numberOfColumns], @"Deletion index (%d) must be less than number of rows (%d).", index, [self numberOfColumns]);
+    
+    for (NSMutableArray *row in self.matrixHead) {
+        [row removeObjectAtIndex:index];
+    }
+}
+
+
 
 
 
