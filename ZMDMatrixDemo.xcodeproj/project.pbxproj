@@ -53,7 +53,7 @@
 		5D2ACE2217C6A4D9003190E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		5D2ACE2517C6A4D9003190E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		5D2ACE2717C6A4D9003190E6 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		5D2ACE2817C6A4D9003190E6 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		5D2ACE2817C6A4D9003190E6 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		5D2ACE2A17C6A4D9003190E6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		5D2ACE3017C6A4D9003190E6 /* ZMDMatrixDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZMDMatrixDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D2ACE3117C6A4D9003190E6 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -61,9 +61,9 @@
 		5D2ACE3B17C6A4D9003190E6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5D2ACE3D17C6A4D9003190E6 /* ZMDMatrixDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZMDMatrixDemoTests.m; sourceTree = "<group>"; };
 		5D2ACE4817C6A4F9003190E6 /* ZMDMatrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZMDMatrix.h; sourceTree = "<group>"; };
-		5D2ACE4917C6A4F9003190E6 /* ZMDMatrix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZMDMatrix.m; sourceTree = "<group>"; };
+		5D2ACE4917C6A4F9003190E6 /* ZMDMatrix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ZMDMatrix.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		5D41562E17C6ABE600CBCE82 /* ZMDMatrix+Arithmetics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ZMDMatrix+Arithmetics.h"; sourceTree = "<group>"; };
-		5D41562F17C6ABE600CBCE82 /* ZMDMatrix+Arithmetics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ZMDMatrix+Arithmetics.m"; sourceTree = "<group>"; };
+		5D41562F17C6ABE600CBCE82 /* ZMDMatrix+Arithmetics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "ZMDMatrix+Arithmetics.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */

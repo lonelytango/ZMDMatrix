@@ -95,15 +95,15 @@
 #pragma mark - Basic Methods
 
 - (NSUInteger)size {
-    return [self columnCount] * [self rowCount];
+    return [self numberOfColumns] * [self numberOfRows];
 }
 
-- (NSUInteger)rowCount {
+- (NSUInteger)numberOfRows {
     return [self.matrixHead count];
 }
 
-- (NSUInteger)columnCount {
-    if ([self rowCount] > 0) {
+- (NSUInteger)numberOfColumns {
+    if ([self numberOfRows] > 0) {
         return [self.matrixHead[0] count];
     }
     return 0;
@@ -130,11 +130,14 @@
 
 - (id)objectInRowIndex:(NSUInteger)rowIndex columnIndex:(NSUInteger)columnIndex  {
     NSAssert(self != nil, @"Matrix cannot be nil");
-    NSAssert1(columnIndex < [self columnCount], @"Column index exceeded bound : %d", [self columnCount]);
-    NSAssert1(rowIndex < [self rowCount], @"Row index exceeded bound : %d", [self rowCount]);
+    NSAssert1(columnIndex < [self numberOfColumns], @"Column index exceeded bound : %d", [self numberOfColumns]);
+    NSAssert1(rowIndex < [self numberOfRows], @"Row index exceeded bound : %d", [self numberOfRows]);
     
     return self.matrixHead[rowIndex][columnIndex];
 }
+
+
+
 
 
 #pragma mark - Data Assignment
@@ -143,29 +146,33 @@
     
     NSAssert1(rowIndex >= 0, @"Row index cannot be nagative (%d)", rowIndex);
     NSAssert1(columnIndex >= 0, @"Column index cannot be nagative (%d)", columnIndex);
-    NSAssert2(rowIndex < [self rowCount], @"Row index (%d) cannot exceed row count (%d)", rowIndex, [self rowCount]);
-    NSAssert2(columnIndex < [self columnCount], @"Column index (%d) cannot exceed column count (%d)", columnIndex, [self columnCount]);
+    NSAssert2(rowIndex < [self numberOfRows], @"Row index (%d) cannot exceed row count (%d)", rowIndex, [self numberOfRows]);
+    NSAssert2(columnIndex < [self numberOfColumns], @"Column index (%d) cannot exceed column count (%d)", columnIndex, [self numberOfColumns]);
     
     NSMutableArray *rowArray = self.matrixHead[rowIndex];
     rowArray[columnIndex] = number;
 }
 
 
+
+
+#pragma mark - Matrix Manipulation
+
 - (void)addRow {
-    [self insertRowAtRowIndex:[self rowCount]];
+    [self insertRowAtRowIndex:[self numberOfRows]];
 }
 
 - (void)addColumn {
-    NSLog(@"Column Count: %d", [self columnCount]);
+    //NSLog(@"Column Count: %d", [self numberOfColumns]);
     
-    [self insertColumnAtColumnIndex:[self columnCount]];
+    [self insertColumnAtColumnIndex:[self numberOfColumns]];
 }
 
 - (void)insertRowAtRowIndex:(NSUInteger)index {
-    NSAssert(index <= [self rowCount], @"Insertion index cannot larger than number of rows.");
+    NSAssert(index <= [self numberOfRows], @"Insertion index cannot larger than number of rows.");
     
     NSMutableArray *row = [NSMutableArray new];
-    for (int i = 0; i < [self rowCount]; i++) {
+    for (int i = 0; i < [self numberOfRows]; i++) {
         [row addObject:@(0)];
     }
     
@@ -173,7 +180,7 @@
 }
 
 - (void)insertColumnAtColumnIndex:(NSUInteger)index {
-    NSAssert(index <= [self columnCount], @"Insertion index cannot larger than number of columns.");
+    NSAssert(index <= [self numberOfColumns], @"Insertion index cannot larger than number of columns.");
     
     for (NSMutableArray *row in self.matrixHead) {
         [row insertObject:@(0) atIndex:index];
@@ -185,7 +192,7 @@
 #pragma mark - Comparison
 
 - (BOOL)isSameSizeAs:(ZMDMatrix *)matrix {
-    return [self columnCount] == [matrix columnCount] && [self rowCount] == [matrix rowCount];
+    return [self numberOfColumns] == [matrix numberOfColumns] && [self numberOfRows] == [matrix numberOfRows];
 }
 
 
@@ -195,8 +202,8 @@
 
 - (NSNumber *)determinant {
     
-    int row = [self rowCount];
-    int column = [self columnCount];
+    int row = [self numberOfRows];
+    int column = [self numberOfColumns];
     int matrixSize = [self size];
     int sign = 1;
     
@@ -247,8 +254,8 @@
 
 - (ZMDMatrix *)transpose {
     
-    NSInteger row = [self rowCount];
-    NSInteger column = [self columnCount];
+    NSInteger row = [self numberOfRows];
+    NSInteger column = [self numberOfColumns];
     
     ZMDMatrix *transposeMatrix = [ZMDMatrix matrixWithRowSize:column columnSize:row];
     for (int i = 0; i < row; i++) {
@@ -261,8 +268,8 @@
 }
 
 - (ZMDMatrix *)adjunctMatrix {
-    int row = [self rowCount];
-    int column = [self columnCount];
+    int row = [self numberOfRows];
+    int column = [self numberOfColumns];
     int matrixSize = [self size];
     int sign = 1;
     

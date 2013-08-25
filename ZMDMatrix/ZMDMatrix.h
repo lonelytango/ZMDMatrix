@@ -21,8 +21,8 @@
 + (id)randomMatrixWithSize:(NSUInteger)size;
 + (id)randomMatrixWithRowSize:(NSUInteger)rowSize columnSize:(NSUInteger)columnSize;
 
-- (NSUInteger)rowCount;
-- (NSUInteger)columnCount;
+- (NSUInteger)numberOfRows;
+- (NSUInteger)numberOfColumns;
 - (NSUInteger)size;
 
 //Data Retrival
@@ -30,6 +30,8 @@
 
 //Data Assignment
 - (void)assignNumber:(NSNumber *)number toRowIndex:(NSUInteger)rowIndex columnIndex:(NSUInteger)columnIndex;
+
+//Matrix Manipulation
 - (void)addRow;     //Add row to the end of last row.
 - (void)addColumn;  //Add column to the end of last column.
 - (void)insertRowAtRowIndex:(NSUInteger)index;

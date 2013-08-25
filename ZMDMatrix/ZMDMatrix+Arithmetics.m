@@ -15,13 +15,13 @@
     
     NSAssert([matrix1 isSameSizeAs:matrix2], @"In order to add matrices, they must be in same size.");
     
-    ZMDMatrix *totalMatrix = [ZMDMatrix matrixWithRowSize:[matrix1 rowCount] columnSize:[matrix1 columnCount]];
+    ZMDMatrix *totalMatrix = [ZMDMatrix matrixWithRowSize:[matrix1 numberOfRows] columnSize:[matrix1 numberOfColumns]];
     
-    NSLog(@"Matrix: %d, %d", [totalMatrix rowCount], [totalMatrix columnCount]);
+    NSLog(@"Matrix: %d, %d", [totalMatrix numberOfRows], [totalMatrix numberOfColumns]);
     
-    for (int i = 0; i < [matrix1 rowCount]; i++) {
+    for (int i = 0; i < [matrix1 numberOfRows]; i++) {
         
-        for (int j = 0; j < [matrix1 columnCount]; j++) {
+        for (int j = 0; j < [matrix1 numberOfColumns]; j++) {
             
             NSNumber *sum = [NSNumber sumOfNumber:[matrix1 objectInRowIndex:i columnIndex:j] and:[matrix2 objectInRowIndex:i columnIndex:j]];
             [totalMatrix assignNumber:sum toRowIndex:i columnIndex:j];
@@ -36,11 +36,11 @@
     
     NSAssert([matrix1 isSameSizeAs:matrix2], @"In order to add matrices, they must be in same size.");
     
-    ZMDMatrix *diffMatrix = [ZMDMatrix matrixWithRowSize:[matrix1 rowCount] columnSize:[matrix1 columnCount]];
+    ZMDMatrix *diffMatrix = [ZMDMatrix matrixWithRowSize:[matrix1 numberOfRows] columnSize:[matrix1 numberOfColumns]];
     
-    for (int i = 0; i < [matrix1 rowCount]; i++) {
+    for (int i = 0; i < [matrix1 numberOfRows]; i++) {
         
-        for (int j = 0; j < [matrix1 columnCount]; j++) {
+        for (int j = 0; j < [matrix1 numberOfColumns]; j++) {
             
             NSNumber *difference = [NSNumber differenceOfNumber:[matrix1 objectInRowIndex:i columnIndex:j] and:[matrix2 objectInRowIndex:i columnIndex:j]];
             [diffMatrix assignNumber:difference toRowIndex:i columnIndex:j];
@@ -54,10 +54,10 @@
 
 + (ZMDMatrix *)productOfMatrix:(ZMDMatrix *)matrix1 and:(ZMDMatrix *)matrix2 {
     
-    int rowMatrix1 = [matrix1 rowCount];
-    int colMatrix1 = [matrix1 columnCount];
-    int rowMatrix2 = [matrix2 rowCount];
-    int colMatrix2 = [matrix2 columnCount];
+    int rowMatrix1 = [matrix1 numberOfRows];
+    int colMatrix1 = [matrix1 numberOfColumns];
+    int rowMatrix2 = [matrix2 numberOfRows];
+    int colMatrix2 = [matrix2 numberOfColumns];
     
     //NSLog(@"Matrix1 row = %d, column = %d, Matrix2 row = %d, column = %d", rowMatrix1, colMatrix1, rowMatrix2, colMatrix2);
     
@@ -102,8 +102,8 @@
 
 + (ZMDMatrix *)multiplyMatrix:(ZMDMatrix *)matrix byValue:(NSNumber *)multiplier {
     
-    NSInteger row = [matrix rowCount];
-    NSInteger column = [matrix columnCount];
+    NSInteger row = [matrix numberOfRows];
+    NSInteger column = [matrix numberOfColumns];
     
     ZMDMatrix *resultMatrix = [ZMDMatrix matrixWithRowSize:row columnSize:column];
     

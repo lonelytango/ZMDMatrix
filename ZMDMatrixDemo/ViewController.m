@@ -32,18 +32,18 @@
     //ZMDMatrix *productMatrix = [ZMDMatrix multiplyMatrix:matrix byValue:@(2)];
     
     ZMDMatrix *matrix = [ZMDMatrix randomMatrixWithSize:6];
-    NSLog(@"Original Matrix: %@ - %d x %d", matrix, [matrix rowCount], [matrix columnCount]);
+    NSLog(@"Original Matrix: %@ - %d x %d", matrix, [matrix numberOfRows], [matrix numberOfColumns]);
     
     [matrix addRow];
-    NSLog(@"Added Row Matrix: %@ - %d x %d", matrix, [matrix rowCount], [matrix columnCount]);
+    NSLog(@"Added Row Matrix: %@ - %d x %d", matrix, [matrix numberOfRows], [matrix numberOfColumns]);
     
     [matrix addColumn];
-    NSLog(@"Added Column Matrix: %@ - %d x %d", matrix, [matrix rowCount], [matrix columnCount]);
+    NSLog(@"Added Column Matrix: %@ - %d x %d", matrix, [matrix numberOfRows], [matrix numberOfColumns]);
     
     [matrix insertRowAtRowIndex:3];
-    NSLog(@"Added Row Matrix: %@ - %d x %d", matrix, [matrix rowCount], [matrix columnCount]);
+    NSLog(@"Added Row Matrix: %@ - %d x %d", matrix, [matrix numberOfRows], [matrix numberOfColumns]);
     
     [matrix insertColumnAtColumnIndex:4];
-    NSLog(@"Added Column Matrix: %@ - %d x %d", matrix, [matrix rowCount], [matrix columnCount]);
+    NSLog(@"Added Column Matrix: %@ - %d x %d", matrix, [matrix numberOfRows], [matrix numberOfColumns]);
 }
 @end
