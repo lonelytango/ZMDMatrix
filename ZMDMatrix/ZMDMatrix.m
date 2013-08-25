@@ -150,6 +150,24 @@
     return self.matrixHead[rowIndex][columnIndex];
 }
 
+- (NSArray *)rowAtIndex:(NSUInteger)index {
+    NSAssert(index < [self numberOfRows], @"Row index has to less than number of rows.");
+    
+    return [[self.matrixHead objectAtIndex:index] copy];
+}
+
+- (NSArray *)columnAtIndex:(NSUInteger)index {
+    NSAssert(index < [self numberOfColumns], @"Column index has to less than number of columns.");
+    
+    NSMutableArray *column = [NSMutableArray new];
+    
+    for (NSMutableArray *row in self.matrixHead) {
+        [column addObject:row[index]];
+    }
+    
+    return [column copy];
+}
+
 
 
 

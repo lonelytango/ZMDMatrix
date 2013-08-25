@@ -31,10 +31,10 @@
     //ZMDMatrix *matrix = [ZMDMatrix randomMatrixWithRowSize:5 columnSize:3];
     //ZMDMatrix *productMatrix = [ZMDMatrix multiplyMatrix:matrix byValue:@(2)];
     
-    ZMDMatrix *matrix = [ZMDMatrix diagonalMatrixWithValues:@[@(5), @(8), @(9), @(12)]];
+    ZMDMatrix *matrix = [ZMDMatrix randomMatrixWithSize:10];
     NSLog(@"Matrix: %@", matrix);
     
-    NSLog(@"Matrix Trace: %@", [matrix trace]);
-    
+    NSLog(@"Row 4: %@", [matrix rowAtIndex:4]);
+    NSLog(@"Column 5: %@", [matrix columnAtIndex:5]);
 }
 @end

@@ -30,7 +30,8 @@
 
 //Data Retrival
 - (id)objectInRowIndex:(NSUInteger)rowIndex columnIndex:(NSUInteger)columnIndex;
-
+- (NSArray *)rowAtIndex:(NSUInteger)index;
+- (NSArray *)columnAtIndex:(NSUInteger)index;
 
 //Data Assignment
 - (void)assignNumber:(NSNumber *)number toRowIndex:(NSUInteger)rowIndex columnIndex:(NSUInteger)columnIndex;
