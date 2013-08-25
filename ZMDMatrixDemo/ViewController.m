@@ -34,8 +34,7 @@
     ZMDMatrix *matrix = [ZMDMatrix diagonalMatrixWithValues:@[@(5), @(8), @(9), @(12)]];
     NSLog(@"Matrix: %@", matrix);
     
-    ZMDMatrix *identity = [ZMDMatrix identityMatrixWithSize:10];
-    NSLog(@"Matrix: %@", identity);
+    NSLog(@"Matrix Trace: %@", [matrix trace]);
     
 }
 @end

@@ -119,6 +119,10 @@
     return 0;
 }
 
+- (BOOL)isSquare {
+    return [self numberOfRows] == [self numberOfColumns];
+}
+
 - (NSString *)description {
     
     NSMutableString *descriptionString = [NSMutableString stringWithString:@"\n"];
@@ -285,6 +289,23 @@
     
     return determinant;
 }
+
+
+- (NSNumber *)trace {
+    
+    NSAssert([self isSquare], @"Unable to find trace in non-square matrix");
+    
+    NSNumber *trace = @(0);
+    for (int i = 0; i < [self numberOfRows]; i++) {
+        for (int j = 0; j < [self numberOfColumns]; j++) {
+            if (i == j) {
+                trace = [trace add:[self objectInRowIndex:i columnIndex:j]];
+            }
+        }
+    }
+    return trace;
+}
+
 
 - (ZMDMatrix *)transpose {
     

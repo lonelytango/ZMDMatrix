@@ -26,7 +26,7 @@
 - (NSUInteger)numberOfRows;
 - (NSUInteger)numberOfColumns;
 - (NSUInteger)size;
-
+- (BOOL)isSquare;
 
 //Data Retrival
 - (id)objectInRowIndex:(NSUInteger)rowIndex columnIndex:(NSUInteger)columnIndex;
@@ -54,6 +54,7 @@
 
 //Characteristics
 - (NSNumber *)determinant;
+- (NSNumber *)trace;
 - (ZMDMatrix *)transpose;
 - (ZMDMatrix *)adjunctMatrix;
 - (ZMDMatrix *)inverseMatrix;
