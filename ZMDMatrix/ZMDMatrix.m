@@ -31,13 +31,17 @@
 }
 
 + (id)randomMatrixWithSize:(NSUInteger)size {
-    return [[self alloc] initWithRowSize:size columnSize:size identityMatrix:NO randomize:YES];
+    return [[self alloc] initWithRowSize:size columnSize:size identityMatrix:NO randomize:YES diagonalArray:nil];
 }
-
 
 + (id)randomMatrixWithRowSize:(NSUInteger)rowSize columnSize:(NSUInteger)columnSize {
-    return [[self alloc] initWithRowSize:rowSize columnSize:columnSize identityMatrix:NO randomize:YES];
+    return [[self alloc] initWithRowSize:rowSize columnSize:columnSize identityMatrix:NO randomize:YES diagonalArray:nil];
 }
+
++ (id)diagonalMatrixWithValues:(NSArray *)values {
+    return [[self alloc] initWithRowSize:[values count] columnSize:[values count] identityMatrix:NO randomize:NO diagonalArray:values];
+}
+
 
 
 - (id)initWithSize:(NSInteger)size {
@@ -46,14 +50,18 @@
 }
 
 - (id)initWithIdentityMatrixWithSize:(NSUInteger)size {
-    return [self initWithRowSize:size columnSize:size identityMatrix:YES randomize:NO];
+    return [self initWithRowSize:size columnSize:size identityMatrix:YES randomize:NO diagonalArray:nil];
 }
 
 - (id)initWithRowSize:(NSUInteger)rowSize columnSize:(NSUInteger)columnSize {
-    return [self initWithRowSize:rowSize columnSize:columnSize identityMatrix:NO randomize:NO];
+    return [self initWithRowSize:rowSize columnSize:columnSize identityMatrix:NO randomize:NO diagonalArray:nil];
 }
 
-- (id)initWithRowSize:(NSUInteger)rowSize columnSize:(NSUInteger)columnSize identityMatrix:(BOOL)identityMatrix randomize:(BOOL)randomize {
+- (id)initWithRowSize:(NSUInteger)rowSize
+           columnSize:(NSUInteger)columnSize
+       identityMatrix:(BOOL)identityMatrix
+            randomize:(BOOL)randomize
+        diagonalArray:(NSArray *)diagonalArray{
     
     NSAssert((rowSize > 0) && (columnSize > 0), @"Row or column in matrix cannot be 0");
     NSAssert((identityMatrix && randomize) == NO, @"Identity and randomize are mutually exclusive.");
@@ -74,9 +82,11 @@
                 
                 } else if (randomize) {
                     [row addObject:@(arc4random() % 10)];
-                }
                 
-                else {
+                } else if ([diagonalArray count] > 0 && i == j) {
+                    [row addObject:diagonalArray[i]];
+                    
+                } else {
                     [row addObject:@(0)];
                 }
             }

@@ -31,32 +31,11 @@
     //ZMDMatrix *matrix = [ZMDMatrix randomMatrixWithRowSize:5 columnSize:3];
     //ZMDMatrix *productMatrix = [ZMDMatrix multiplyMatrix:matrix byValue:@(2)];
     
-    ZMDMatrix *matrix = [ZMDMatrix randomMatrixWithSize:6];
-    NSLog(@"Original Matrix: %@ - %d x %d", matrix, [matrix numberOfRows], [matrix numberOfColumns]);
+    ZMDMatrix *matrix = [ZMDMatrix diagonalMatrixWithValues:@[@(5), @(8), @(9), @(12)]];
+    NSLog(@"Matrix: %@", matrix);
     
-    [matrix addRow];
-    NSLog(@"Added Row Matrix: %@ - %d x %d", matrix, [matrix numberOfRows], [matrix numberOfColumns]);
+    ZMDMatrix *identity = [ZMDMatrix identityMatrixWithSize:10];
+    NSLog(@"Matrix: %@", identity);
     
-    [matrix addColumn];
-    NSLog(@"Added Column Matrix: %@ - %d x %d", matrix, [matrix numberOfRows], [matrix numberOfColumns]);
-    
-    [matrix insertRowAtRowIndex:3];
-    NSLog(@"Added Row Matrix: %@ - %d x %d", matrix, [matrix numberOfRows], [matrix numberOfColumns]);
-    
-    [matrix insertColumnAtColumnIndex:4];
-    NSLog(@"Added Column Matrix: %@ - %d x %d", matrix, [matrix numberOfRows], [matrix numberOfColumns]);
-
-    
-    [matrix removeLastColumn];
-    NSLog(@"Remove Row Matrix: %@ - %d x %d", matrix, [matrix numberOfRows], [matrix numberOfColumns]);
-    
-    [matrix removeLastRow];
-    NSLog(@"Remove Column Matrix: %@ - %d x %d", matrix, [matrix numberOfRows], [matrix numberOfColumns]);
-    
-    [matrix removeRowAtIndex:3];
-    NSLog(@"Added Row Matrix: %@ - %d x %d", matrix, [matrix numberOfRows], [matrix numberOfColumns]);
-    
-    [matrix removeColumnAtIndex:4];
-    NSLog(@"Remove Column Matrix: %@ - %d x %d", matrix, [matrix numberOfRows], [matrix numberOfColumns]);
 }
 @end

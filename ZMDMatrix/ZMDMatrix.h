@@ -21,15 +21,20 @@
 + (id)randomMatrixWithSize:(NSUInteger)size;
 + (id)randomMatrixWithRowSize:(NSUInteger)rowSize columnSize:(NSUInteger)columnSize;
 
++ (id)diagonalMatrixWithValues:(NSArray *)values;
+
 - (NSUInteger)numberOfRows;
 - (NSUInteger)numberOfColumns;
 - (NSUInteger)size;
 
+
 //Data Retrival
 - (id)objectInRowIndex:(NSUInteger)rowIndex columnIndex:(NSUInteger)columnIndex;
 
+
 //Data Assignment
 - (void)assignNumber:(NSNumber *)number toRowIndex:(NSUInteger)rowIndex columnIndex:(NSUInteger)columnIndex;
+
 
 //Matrix Manipulation
 - (void)addRow;     //Add row to the end of last row.
@@ -45,6 +50,7 @@
 
 //Comparison
 - (BOOL)isSameSizeAs:(ZMDMatrix *)matrix;
+
 
 //Characteristics
 - (NSNumber *)determinant;
